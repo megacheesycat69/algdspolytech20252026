@@ -1,16 +1,16 @@
-#include "DoublyLinkedList.h"
+ï»¿#include "DoublyLinkedList.h"
 
-//ñîçäàíèå íîâîãî óçëà
+// Ğ¤ÑƒĞ½ĞºÑ†Ğ¸Ñ ÑĞ¾Ğ·Ğ´Ğ°Ğ½Ğ¸Ñ Ğ½Ğ¾Ğ²Ğ¾Ğ³Ğ¾ ÑƒĞ·Ğ»Ğ°
 linkedListNode* createNode(const char* data) {
     linkedListNode* newNode = (linkedListNode*)malloc(sizeof(linkedListNode));
     if (!newNode) {
-        fprintf(stderr, "Îøèáêà âûäåëåíèÿ ïàìÿòè äëÿ óçëà\n");
+        fprintf(stderr, "ĞÑˆĞ¸Ğ±ĞºĞ° Ğ²Ñ‹Ğ´ĞµĞ»ĞµĞ½Ğ¸Ñ Ğ¿Ğ°Ğ¼ÑÑ‚Ğ¸ Ğ´Ğ»Ñ ÑƒĞ·Ğ»Ğ°\n");
         return NULL;
     }
 
     newNode->data = (char*)malloc(strlen(data) + 1);
     if (!newNode->data) {
-        fprintf(stderr, "Îøèáêà âûäåëåíèÿ ïàìÿòè äëÿ äàííûõ\n");
+        fprintf(stderr, "ĞÑˆĞ¸Ğ±ĞºĞ° Ğ²Ñ‹Ğ´ĞµĞ»ĞµĞ½Ğ¸Ñ Ğ¿Ğ°Ğ¼ÑÑ‚Ğ¸ Ğ´Ğ»Ñ Ğ´Ğ°Ğ½Ğ½Ñ‹Ñ…\n");
         free(newNode);
         return NULL;
     }
@@ -22,32 +22,32 @@ linkedListNode* createNode(const char* data) {
     return newNode;
 }
 
-//äîáàâëåíèå óçëà â êîíåö ñïèñêà
+// Ğ¤ÑƒĞ½ĞºÑ†Ğ¸Ñ Ğ´Ğ¾Ğ±Ğ°Ğ²Ğ»ĞµĞ½Ğ¸Ñ ÑƒĞ·Ğ»Ğ° Ğ² ĞºĞ¾Ğ½ĞµÑ† ÑĞ¿Ğ¸ÑĞºĞ°
 linkedListNode* appendNode(linkedListNode* head, const char* data) {
     linkedListNode* newNode = createNode(data);
     if (!newNode) {
         return head;
     }
 
-    //åñëè ñïèñîê ïóñò, íîâûé óçåë ñòàíîâèòñÿ ãîëîâîé
+    // Ğ•ÑĞ»Ğ¸ ÑĞ¿Ğ¸ÑĞ¾Ğº Ğ¿ÑƒÑÑ‚, Ğ½Ğ¾Ğ²Ñ‹Ğ¹ ÑƒĞ·ĞµĞ» ÑÑ‚Ğ°Ğ½Ğ¾Ğ²Ğ¸Ñ‚ÑÑ Ğ³Ğ¾Ğ»Ğ¾Ğ²Ğ¾Ğ¹
     if (head == NULL) {
         return newNode;
     }
 
-    //íàõîäèì ïîñëåäíèé óçåë
+    // ĞĞ°Ñ…Ğ¾Ğ´Ğ¸Ğ¼ Ğ¿Ğ¾ÑĞ»ĞµĞ´Ğ½Ğ¸Ğ¹ ÑƒĞ·ĞµĞ»
     linkedListNode* current = head;
     while (current->next != NULL) {
         current = current->next;
     }
 
-    //íîâûé óçåë â êîíåö
+    // Ğ”Ğ¾Ğ±Ğ°Ğ²Ğ»ÑĞµĞ¼ Ğ½Ğ¾Ğ²Ñ‹Ğ¹ ÑƒĞ·ĞµĞ» Ğ² ĞºĞ¾Ğ½ĞµÑ†
     current->next = newNode;
     newNode->prev = current;
 
     return head;
 }
 
-//ïîäñ÷åò äëèíû ñïèñêà
+// Ğ¤ÑƒĞ½ĞºÑ†Ğ¸Ñ Ğ¿Ğ¾Ğ´ÑÑ‡ĞµÑ‚Ğ° Ğ´Ğ»Ğ¸Ğ½Ñ‹ ÑĞ¿Ğ¸ÑĞºĞ°
 int listLength(linkedListNode* head) {
     int count = 0;
     linkedListNode* current = head;
@@ -58,7 +58,7 @@ int listLength(linkedListNode* head) {
     return count;
 }
 
-//îñâîáîæäåíèå ïàìÿòè ñïèñêà
+// Ğ¤ÑƒĞ½ĞºÑ†Ğ¸Ñ Ğ¾ÑĞ²Ğ¾Ğ±Ğ¾Ğ¶Ğ´ĞµĞ½Ğ¸Ñ Ğ¿Ğ°Ğ¼ÑÑ‚Ğ¸ ÑĞ¿Ğ¸ÑĞºĞ°
 void freeList(linkedListNode* head) {
     linkedListNode* current = head;
     while (current != NULL) {
@@ -69,7 +69,7 @@ void freeList(linkedListNode* head) {
     }
 }
 
-//ïå÷àòü ñïèñêà
+// Ğ¤ÑƒĞ½ĞºÑ†Ğ¸Ñ Ğ¿ĞµÑ‡Ğ°Ñ‚Ğ¸ ÑĞ¿Ğ¸ÑĞºĞ°
 void printList(linkedListNode* head) {
     linkedListNode* current = head;
     while (current != NULL) {
@@ -82,7 +82,7 @@ void printList(linkedListNode* head) {
     printf(" -> NULL\n");
 }
 
-//ñîğòèğîâêà
+// ĞŸÑ€Ğ¾ÑÑ‚Ğ°Ñ Ğ¸ Ğ½Ğ°Ğ´ĞµĞ¶Ğ½Ğ°Ñ ÑĞ¾Ñ€Ñ‚Ğ¸Ñ€Ğ¾Ğ²ĞºĞ° Ğ¿ÑƒĞ·Ñ‹Ñ€ÑŒĞºĞ¾Ğ¼ Ñ Ğ¾Ğ±Ğ¼ĞµĞ½Ğ¾Ğ¼ Ğ´Ğ°Ğ½Ğ½Ñ‹Ñ…
 linkedListNode* bubbleSort(linkedListNode* head) {
     if (head == NULL || head->next == NULL) {
         return head;
@@ -97,6 +97,7 @@ linkedListNode* bubbleSort(linkedListNode* head) {
 
         while (current != NULL && current->next != NULL) {
             if (strcmp(current->data, current->next->data) > 0) {
+                // ĞĞ±Ğ¼ĞµĞ½ Ğ´Ğ°Ğ½Ğ½Ñ‹Ğ¼Ğ¸ (Ğ¿Ñ€Ğ¾ÑÑ‚Ğ¾ Ğ¸ Ğ½Ğ°Ğ´ĞµĞ¶Ğ½Ğ¾)
                 char* temp = current->data;
                 current->data = current->next->data;
                 current->next->data = temp;

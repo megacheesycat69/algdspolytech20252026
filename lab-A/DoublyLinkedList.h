@@ -12,12 +12,14 @@ extern "C" {
 #include <stdlib.h>
 #include <string.h>
 
+    // Структура узла двусвязного списка
     typedef struct linkedListNode {
         char* data;
         struct linkedListNode* next;
         struct linkedListNode* prev;
     } linkedListNode;
 
+    // Функции для работы со списком
     linkedListNode* createNode(const char* data);
     linkedListNode* appendNode(linkedListNode* head, const char* data);
     int listLength(linkedListNode* head);
@@ -29,4 +31,4 @@ extern "C" {
 }
 #endif
 
-#endif 
+#endif // DOUBLY_LINKED_LIST_H
